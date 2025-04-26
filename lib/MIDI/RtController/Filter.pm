@@ -20,6 +20,27 @@ use namespace::clean;
 C<MIDI::RtController::Filter> is the parent class of
 L<MIDI::RtController> filters.
 
+Passing C<all> to the C<add_filter> method means that any MIDI event
+will trigger the filter.
+
+In order to stop a B<running> filter, set the B<halt> attribute.
+
+=head2 Making filters
+
+All filter methods must accept the object, a MIDI device name, a
+delta-time, and a MIDI event ARRAY reference, like:
+
+  sub breathe ($self, $device, $delta, $event) {
+    return 0 if $self->running;
+    my ($event_type, $chan, $control, $value) = $event->@*;
+    ...
+    return $self->continue;
+  }
+
+A filter also must return a boolean value. This tells
+L<MIDI::RtController> to continue processing other known filters or
+not. The B<continue> attribute is used for this purpose.
+
 =head1 ATTRIBUTES
 
 =head2 rtc
@@ -91,6 +112,40 @@ has trigger => (
     is      => 'rw',
     isa     => Maybe[Velocity],
     default => sub { undef },
+);
+
+=head2 running
+
+  $running = $filter->running;
+  $filter->running($boolean);
+
+Are we running a filter?
+
+Default: C<0>
+
+=cut
+
+has running => (
+    is      => 'rw',
+    isa     => Bool,
+    default => 0,
+);
+
+=head2 halt
+
+  $halt = $filter->halt;
+  $filter->halt($boolean);
+
+This Boolean can be used to terminate B<running> filters.
+
+Default: C<0>
+
+=cut
+
+has halt => (
+    is      => 'rw',
+    isa     => Bool,
+    default => 0,
 );
 
 =head2 verbose
