@@ -1,37 +1,37 @@
 package MIDI::RtController::Filter;
 
-# ABSTRACT: Moo Module
+# ABSTRACT: Parent class of RtController filters
 
 our $VERSION = '0.0100';
 
 use Moo;
 use strictures 2;
-use Carp qw(croak);
+use Types::Standard qw(Bool);
 use namespace::clean;
 
 =head1 SYNOPSIS
 
-  use MIDI::RtController::Filter ();
-
-  my $x = MIDI::RtController::Filter->new(verbose => 1);
+  package Your::Filter;
+  extends 'MIDI::RtController::Filter';
 
 =head1 DESCRIPTION
 
-A C<MIDI::RtController::Filter> is a Moo module.
+C<MIDI::RtController::Filter> is the parent class of
+L<MIDI::RtController> filters.
 
 =head1 ATTRIBUTES
 
 =head2 verbose
 
-  $verbose = $x->verbose;
+  $verbose = $filter->verbose;
 
 Show progress.
 
 =cut
 
 has verbose => (
-    is      => 'ro',
-    isa     => sub { croak "$_[0] is not a boolean" unless $_[0] =~ /^[01]$/ },
+    is      => 'rw',
+    isa     => Bool,
     default => sub { 0 },
 );
 
