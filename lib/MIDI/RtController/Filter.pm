@@ -21,9 +21,8 @@ C<MIDI::RtController::Filter> is the parent class of
 L<MIDI::RtController> filters.
 
 Passing C<all> to the C<add_filter> method means that any MIDI event
-will trigger the filter.
-
-In order to stop a B<running> filter, set the B<halt> attribute.
+will fire the filter. But C<[qw(note_on note_off)]> or
+C<control_change> works, as well.
 
 =head2 Making filters
 
