@@ -54,6 +54,14 @@ __END__
 
 L<Moo>
 
-L<http://somewhere.el.se>
+L<MIDI::RtController>
+
+L<MIDI::RtController::Filter-CC>
+
+L<MIDI::RtController::Filter-Drums>
+
+L<MIDI::RtController::Filter-Tonal>
+
+L<Types::Standard>
 
 =cut
