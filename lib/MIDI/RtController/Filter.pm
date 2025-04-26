@@ -54,7 +54,6 @@ constructor.
 has rtc => (
     is  => 'ro',
     isa => sub { die 'Invalid controller' unless ref($_[0]) eq 'MIDI::RtController' },
-    required => sub { 1 },
 );
 
 =head2 channel
