@@ -46,8 +46,7 @@ not. The B<continue> attribute is used for this purpose.
 
   $controller = $filter->rtc;
 
-The required L<MIDI::RtController> instance provided in the
-constructor.
+An L<MIDI::RtController> instance provided in the constructor.
 
 =cut
 
