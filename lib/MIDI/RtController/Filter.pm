@@ -147,6 +147,24 @@ has halt => (
     default => 0,
 );
 
+=head2 continue
+
+  $continue = $filter->continue;
+  $filter->continue($boolean);
+
+This Boolean can be used to either stop or continue processing other
+filters by L<MIDI::RtController> when returned from a filter.
+
+Default: C<0>
+
+=cut
+
+has continue => (
+    is      => 'rw',
+    isa     => Bool,
+    default => 0,
+);
+
 =head2 verbose
 
   $verbose = $filter->verbose;
