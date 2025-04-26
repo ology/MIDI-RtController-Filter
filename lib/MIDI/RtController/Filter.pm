@@ -6,7 +6,8 @@ our $VERSION = '0.0100';
 
 use Moo;
 use strictures 2;
-use Types::Standard qw(Bool);
+use Types::Standard qw(Bool Maybe);
+use Types::MIDI qw(Channel Velocity);
 use namespace::clean;
 
 =head1 SYNOPSIS
@@ -20,6 +21,77 @@ C<MIDI::RtController::Filter> is the parent class of
 L<MIDI::RtController> filters.
 
 =head1 ATTRIBUTES
+
+=head2 rtc
+
+  $controller = $filter->rtc;
+
+The required L<MIDI::RtController> instance provided in the
+constructor.
+
+=cut
+
+has rtc => (
+    is  => 'ro',
+    isa => sub { die 'Invalid controller' unless ref($_[0]) eq 'MIDI::RtController' },
+    required => sub { 1 },
+);
+
+=head2 channel
+
+  $channel = $filter->channel;
+  $filter->channel($number);
+
+The current MIDI channel value between C<0> and C<15>.
+
+Default: C<0>
+
+=cut
+
+has channel => (
+    is      => 'rw',
+    isa     => Channel,
+    default => sub { 0 },
+);
+
+=head2 value
+
+  $value = $filter->value;
+  $filter->value($number);
+
+Return or set the MIDI event value. This is a generic setting that can
+be used by filters to set or retrieve state. This often a whole number
+between C<0> and C<127>, but can be C<undef>.
+
+Default: C<undef>
+
+=cut
+
+has value => (
+    is      => 'rw',
+    isa     => Maybe[Velocity],
+    default => sub { undef },
+);
+
+=head2 trigger
+
+  $trigger = $filter->trigger;
+  $filter->trigger($number);
+
+Return or set the trigger. This is a generic setting that
+can be used by filters to set or retrieve state. This often a whole
+number between C<0> and C<127> representing an event note or
+control-change.
+
+Default: C<undef>
+
+=cut
+
+has trigger => (
+    is      => 'rw',
+    isa     => Maybe[Velocity],
+    default => sub { undef },
+);
 
 =head2 verbose
 
