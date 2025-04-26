@@ -35,20 +35,7 @@ has verbose => (
     default => sub { 0 },
 );
 
-=head1 METHODS
-
-=head2 new
-
-  $x = MIDI::RtController::Filter->new(verbose => 1);
-
-Create a new C<MIDI::RtController::Filter> object.
-
-=for Pod::Coverage BUILD
-
-=cut
-
 1;
-__END__
 
 =head1 SEE ALSO
 
