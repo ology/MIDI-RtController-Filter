@@ -20,10 +20,6 @@ use namespace::clean;
 C<MIDI::RtController::Filter> is the parent class of
 L<MIDI::RtController> filters.
 
-Passing C<all> to the C<add_filter> method means that any MIDI event
-will fire the filter. But C<[qw(note_on note_off)]> or
-C<control_change> works, as well.
-
 =head2 Making filters
 
 All filter methods must accept the object, a MIDI device name, a
@@ -40,13 +36,21 @@ A filter also must return a boolean value. This tells
 L<MIDI::RtController> to continue processing other known filters or
 not. The B<continue> attribute is used for this purpose.
 
+=head2 Calling filters
+
+  $controller->add_filter('foo_filter', note_on => $filter->curry::foo_filter);
+
+Passing C<all> to the C<add_filter> method means that any MIDI event
+will fire the filter. But C<[qw(note_on note_off)]> or
+C<control_change> works, as well.
+
 =head1 ATTRIBUTES
 
 =head2 rtc
 
   $controller = $filter->rtc;
 
-An L<MIDI::RtController> instance provided in the constructor.
+A L<MIDI::RtController> instance provided in the constructor.
 
 =cut
 
