@@ -189,11 +189,11 @@ L<Moo>
 
 L<MIDI::RtController>
 
-L<MIDI::RtController::Filter-CC>
+L<MIDI::RtController::Filter::CC>
 
-L<MIDI::RtController::Filter-Drums>
+L<MIDI::RtController::Filter::Drums>
 
-L<MIDI::RtController::Filter-Tonal>
+L<MIDI::RtController::Filter::Tonal>
 
 L<Types::Standard>
 
