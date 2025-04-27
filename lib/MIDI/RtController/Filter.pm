@@ -41,7 +41,7 @@ not. The B<continue> attribute is used for this purpose.
   $controller->add_filter('foo_filter', note_on => $filter->curry::foo_filter);
 
 Passing C<all> to the C<add_filter> method means that any MIDI event
-will fire the filter. But C<[qw(note_on note_off)]> or
+will fire the filter. But C<note_on>, C<[qw(note_on note_off)]>, or
 C<control_change> works, as well.
 
 =head1 ATTRIBUTES
