@@ -154,8 +154,9 @@ has halt => (
   $continue = $filter->continue;
   $filter->continue($boolean);
 
-This Boolean can be used to either stop or continue processing other
-filters by L<MIDI::RtController> when returned from a filter.
+This Boolean can be used to either stop (C<1>) or continue (C<0>)
+processing other filters by L<MIDI::RtController> when returned from a
+filter.
 
 Default: C<0>
 
