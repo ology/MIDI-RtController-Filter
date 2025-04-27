@@ -40,6 +40,7 @@ not. The B<continue> attribute is used for this purpose.
 
   $controller->add_filter('breathe', note_on => $filter->curry::breathe);
 
+Call the C<add_filter> method on an L<MIDI::RtController> instance.
 Passing C<all> to the C<add_filter> method means that any MIDI event
 will fire the filter. But C<note_on>, C<[qw(note_on note_off)]>, or
 C<control_change> works, as well.
