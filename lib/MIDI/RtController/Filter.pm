@@ -38,7 +38,7 @@ not. The B<continue> attribute is used for this purpose.
 
 =head2 Calling filters
 
-  $controller->add_filter('foo_filter', note_on => $filter->curry::foo_filter);
+  $controller->add_filter('breathe', note_on => $filter->curry::breathe);
 
 Passing C<all> to the C<add_filter> method means that any MIDI event
 will fire the filter. But C<note_on>, C<[qw(note_on note_off)]>, or
