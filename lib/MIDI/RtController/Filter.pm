@@ -6,7 +6,7 @@ our $VERSION = '0.0102';
 
 use Moo;
 use strictures 2;
-use Types::Standard qw(Bool Maybe);
+use Types::Standard qw(Bool InstanceOf Maybe);
 use Types::MIDI qw(Channel Velocity);
 use namespace::clean;
 
@@ -56,8 +56,9 @@ A L<MIDI::RtController> instance provided in the constructor.
 =cut
 
 has rtc => (
-    is  => 'ro',
-    isa => sub { die 'Invalid controller' unless ref($_[0]) eq 'MIDI::RtController' },
+    is       => 'ro',
+    isa      => InstanceOf['MIDI::RtController'],
+    required => 1,
 );
 
 =head2 channel
@@ -74,7 +75,7 @@ Default: C<0>
 has channel => (
     is      => 'rw',
     isa     => Channel,
-    default => sub { 0 },
+    default => 0,
 );
 
 =head2 value
@@ -93,7 +94,7 @@ Default: C<undef>
 has value => (
     is      => 'rw',
     isa     => Maybe[Velocity],
-    default => sub { undef },
+    default => undef,
 );
 
 =head2 trigger
@@ -113,7 +114,7 @@ Default: C<undef>
 has trigger => (
     is      => 'rw',
     isa     => Maybe[Velocity],
-    default => sub { undef },
+    default => undef,
 );
 
 =head2 running
@@ -180,7 +181,7 @@ Show progress.
 has verbose => (
     is      => 'rw',
     isa     => Bool,
-    default => sub { 0 },
+    default => 0,
 );
 
 1;
