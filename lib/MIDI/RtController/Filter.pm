@@ -2,7 +2,7 @@ package MIDI::RtController::Filter;
 
 # ABSTRACT: Parent class of RtController filters
 
-our $VERSION = '0.0103';
+our $VERSION = '0.0104';
 
 use Moo;
 use strictures 2;
