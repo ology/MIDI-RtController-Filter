@@ -6,7 +6,7 @@ our $VERSION = '0.0103';
 
 use Moo;
 use strictures 2;
-use Types::Standard qw(Bool InstanceOf Maybe);
+use Types::Standard qw(Bool Maybe);
 use Types::MIDI qw(Channel Velocity);
 use namespace::clean;
 
@@ -56,9 +56,8 @@ A L<MIDI::RtController> instance provided in the constructor.
 =cut
 
 has rtc => (
-    is       => 'ro',
-    isa      => InstanceOf['MIDI::RtController'],
-    required => 1,
+    is  => 'ro',
+    isa => sub { die 'Invalid controller' unless ref($_[0]) eq 'MIDI::RtController' },
 );
 
 =head2 channel
